@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dinamik Yatay Ve Dikey Menü Oluşturma</title>
+	<style type="text/css">
+	.anadiv{
+		width: auto;
+		height: auto;
+		border:1px solid lightgray;
+		
+	}
+	.yatay{
+		width: 150px;
+		height: 30px;
+		border:1px solid blue;
+		background-color: lightgray;
+		float: left;
+		padding: 5px;
+		margin: 3px;
+		
+	}
+	.temizle{clear: both;}
+	.acilirMenu{
+		width: 150px;
+		height: 30px;
+		border:1px solid blue;
+		background-color: lightgray;
+		padding: 5px;
+		
+		
+	}
+	.dikey{
+
+		width: 150px;
+		height: 30px;
+		border:1px solid blue;
+		background-color: lightgray;
+		
+		padding: 5px;
+		margin: 3px;
+		
+
+	}
+
+</style>
+
+
+<script type="text/javascript">
+	function buton(){
+		var istek = prompt("Yatay(Y) veya Dikey(D) Menü Seçiniz.");
+
+		if(istek == "Y"){ //YATAY MENU
+			//console.log("YATAY");
+			var menuIcerikSayisi=prompt("Yatay Menünüzde kaç tane içerik olsun belirtiniz ");
+			if( !isNaN(menuIcerikSayisi) ){
+				//console.log("sayı");	
+				var anadiv=document.createElement("div");
+				anadiv.className="anadiv";
+				for (var i=0;i<menuIcerikSayisi;i++) {
+
+					var yatayDivi=document.createElement("div");
+					yatayDivi.className="yatay";
+					yatayDivi.style.width = "150px";
+					yatayDivi.style.height = "30px";
+					//console.log(yatayDivi.style.width);
+					var menuIcerigiYaz=prompt("Yatay Menü içeriğini yazınız ");
+					yatayDivi.innerHTML=menuIcerigiYaz;
+					anadiv.appendChild(yatayDivi);
+
+
+				}
+				var temizle=document.createElement("div");
+				temizle.className="temizle";
+				anadiv.appendChild(temizle);
+
+				document.body.appendChild(anadiv);
+				
+
+				var acilirMenuEkle=prompt("İstenilen Yere Açılır Menü Ekleyiniz. Rakamla belirtiniz.");
+				var acilirMenuSayisi=prompt("Kaç tanse açılır menu oluşturalım.");
+				if(!isNaN(acilirMenuSayisi)){
+					if( parseInt(acilirMenuEkle) <= menuIcerikSayisi ){
+
+						for (var i = 1;i<acilirMenuSayisi; i++) {
+							var acilirDivi=document.createElement("div");
+							acilirDivi.className="acilirMenu";
+							acilirDivi.style.width="150px";
+							var kaydirma = (parseInt(acilirMenuEkle) -1) * parseInt(acilirDivi.style.width) + 20;
+							acilirDivi.style.marginLeft=kaydirma+"px";
+						//acilirDivi.style.top="50px";
+
+						//console.log(acilirDivi.style.left);
+						var menuIcerigiYaz=prompt("Yatay Menü içeriğini yazınız ");
+						acilirDivi.innerHTML=menuIcerigiYaz;
+						anadiv.appendChild(acilirDivi);
+
+						
+					}
+
+
+				}else{
+					console.log("Belirttiğiniz sayıda menu içeriği yok.");
+				}
+			}else{
+				console.log("Sayi değil.");
+			}
+
+
+
+
+		}else{
+			console.log("sayı değil.");
+		}
+
+
+
+
+		}else if(istek == "D"){//DİKEY MENU
+			//console.log("DİKEY");
+			
+			var menuIcerikSayisi=prompt("Dikey Menünüzde kaç tane içerik olsun belirtiniz ");
+			if( !isNaN(menuIcerikSayisi) ){
+				//console.log("sayı");	
+				var anadiv=document.createElement("div");
+				anadiv.className="anadiv";
+				for (var i=0;i<menuIcerikSayisi;i++) {
+
+					var dikeyDivi=document.createElement("div");
+					dikeyDivi.className="dikey";
+					dikeyDivi.style.width = "150px";
+					dikeyDivi.style.height = "30px";
+					//console.log(dikeyDivi.style.width);
+					var menuIcerigiYaz=prompt("Dikey Menü içeriğini yazınız ");
+					dikeyDivi.innerHTML=menuIcerigiYaz;
+					anadiv.appendChild(dikeyDivi);
+
+
+				}
+				//var temizle=document.createElement("div");
+				//temizle.className="temizle";
+				//anadiv.appendChild(temizle);
+
+				document.body.appendChild(anadiv);
+				
+
+
+			}else{
+				console.log("Bir Menü Seçiniz");
+			}
+
+		}else {
+			console.log("Y veya D seçiniz.");
+		}
+
+	}
+
+
+</script>
+
+
+</head>
+<body onload="buton()"> 
+	<!--<center><input type="button" value="TIKLA" onclick="buton()"/></center>-->
+</body>
+</html>
